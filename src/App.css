@@ -1,0 +1,15 @@
+.wrapper {
+	width: 700px;
+	height: 635px;
+	margin-left: -125px;
+}
+
+.pizza {
+	width: 500px;
+	height: 500px;
+	position: absolute;
+	display: flex;
+	justify-content: start;
+	justify-items: start;
+	margin: -530px 0 0 40px;
+}
