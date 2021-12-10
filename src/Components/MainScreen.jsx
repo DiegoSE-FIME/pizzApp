@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
+import { useNavigate } from 'react-router';
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
@@ -21,9 +22,13 @@ function MainScreen() {
 	const [error, setError] = useState(null);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [user, setUser] = useState(null);
+
+	let navigate = useNavigate();
 
 	const handleFormData = (e) => {
 		e.preventDefault();
+
 		if (!email.trim()) {
 			setError('Email is required');
 			return;
@@ -42,6 +47,7 @@ function MainScreen() {
 		setError(null);
 		setEmail('');
 		setPassword('');
+		setUser(email, password);
 	};
 
 	const forgotPassword = () => {
@@ -93,7 +99,14 @@ function MainScreen() {
 									type="button">
 									¿Olvidaste tu contraseña?
 								</button>
-								<StyledButton className="mt-3" type="submit">
+								<StyledButton
+									className="mt-3"
+									type="submit"
+									onClick={() =>
+										user === null
+											? navigate('/')
+											: navigate('/home') && setUser(null)
+									}>
 									Iniciar sesión
 								</StyledButton>
 							</form>
