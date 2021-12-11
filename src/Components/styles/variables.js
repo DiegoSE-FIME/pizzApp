@@ -1,7 +1,7 @@
 export default {
 	colors: {
 		black: '#000',
-		grey: '#707070',
+		gray: '#707070',
 		yellow: '#ffd966',
 	},
 
