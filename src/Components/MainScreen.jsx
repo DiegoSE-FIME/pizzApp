@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import '../App.css';
 import { useNavigate } from 'react-router';
+import '../App.css';
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
@@ -20,7 +20,7 @@ function MainScreen() {
 	}, []);
 
 	const [error, setError] = useState(null);
-	const [email, setEmail] = useState('');
+	const [userName, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [user, setUser] = useState(null);
 
@@ -29,8 +29,8 @@ function MainScreen() {
 	const handleFormData = (e) => {
 		e.preventDefault();
 
-		if (!email.trim()) {
-			setError('Email is required');
+		if (!userName.trim()) {
+			setError('A user is required');
 			return;
 		} else if (!password.trim()) {
 			setError('Password is required');
@@ -42,17 +42,25 @@ function MainScreen() {
 		if (password.length < 6) {
 			setError('Password length must be greater than 6 characters');
 			return;
+		} else if (userName.length <= 2) {
+			setError('User name must be greater than 2 characters');
+			return;
+		} else {
+			setError(null);
 		}
 
 		setError(null);
 		setEmail('');
 		setPassword('');
-		setUser(email, password);
+		setUser(userName);
+		navigate('/home');
 	};
 
 	const forgotPassword = () => {
 		alert('Lo siento pero aún no tenemos esa función :c');
 	};
+
+	const saveUser = localStorage.setItem('user', userName);
 
 	return (
 		<div className="container">
@@ -80,11 +88,10 @@ function MainScreen() {
 									<div className="alert alert-danger">{error}</div>
 								) : null}
 								<InputForm
-									type="email"
 									className="form-control mt-4"
-									placeholder="Email"
+									placeholder="User"
 									onChange={(e) => setEmail(e.target.value)}
-									value={email}
+									value={userName}
 								/>
 								<InputForm
 									type="password"
@@ -102,11 +109,7 @@ function MainScreen() {
 								<StyledButton
 									className="mt-3"
 									type="submit"
-									onClick={() =>
-										user === null
-											? navigate('/')
-											: navigate('/home') && setUser(null)
-									}>
+									onClick={() => (user ? handleFormData() : navigate('/'))}>
 									Iniciar sesión
 								</StyledButton>
 							</form>
