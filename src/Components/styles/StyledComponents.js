@@ -23,3 +23,22 @@ export const StyledButton = styled.button`
 	font-size: ${(size) => size.theme.sizes.normalSize};
 	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 `;
+
+export const SmallText = styled.h5`
+	color: ${(c) => c.theme.colors.gray};
+	display: flex;
+	justify-content: start;
+	margin-top: 60px;
+	margin-left: 40px;
+	border-bottom: 3px solid ${(c) => c.theme.colors.yellow};
+	width: 90px;
+`;
+
+export const StyledTitle = styled.h1`
+	width: 200px;
+	font-size: 24px;
+	position: relative;
+	top: 40px;
+	left: 40px;
+	margin-bottom: 30px;
+`;
