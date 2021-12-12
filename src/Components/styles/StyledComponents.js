@@ -42,3 +42,16 @@ export const StyledTitle = styled.h1`
 	left: 40px;
 	margin-bottom: 30px;
 `;
+
+export const StyledCard = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 150px;
+	height: 150px;
+	background-color: #f5f5f5;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	margin: 0 0 25px 35px;
+`;
