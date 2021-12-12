@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+import axios from 'axios';
 import '../App.css';
 
 import Aos from 'aos';
@@ -13,21 +14,26 @@ import {
 	BackgroundImage,
 	SmallText,
 	StyledTitle,
+	StyledCard,
 } from '../Components/styles/StyledComponents';
 
 function Home() {
+	const [restaurants, setRestaurants] = useState([]);
 	useEffect(() => {
 		Aos.init({ duration: 2000 });
+		axios.get('api.json').then((res) => {
+			setRestaurants(res.data[0].response.stores);
+		});
 	}, []);
 
+	const restaurantsArray = Object.values(restaurants);
+	const user = localStorage.getItem('user');
 	let navigate = useNavigate();
 
 	const logOut = () => {
 		navigate('/');
 		localStorage.clear();
-		console.log('salio');
 	};
-	const user = localStorage.getItem('user');
 
 	return (
 		<div className="container">
@@ -55,6 +61,27 @@ function Home() {
 							onClick={() => logOut()}>
 							Salir
 						</button>
+					</div>
+					<div className="row mt-4">
+						{restaurantsArray.map((restaurant) => (
+							<div
+								className="col-sm mb-4"
+								key={restaurant.id}
+								data-aos="fade-left"
+								data-aos-delay="200">
+								<StyledCard>
+									<div>
+										<img
+											src={restaurant.logo}
+											alt=""
+											className="card-img-top"
+										/>
+									</div>
+								</StyledCard>
+								<h5 className="card-title">{restaurant.name}</h5>
+								<p className="card-text">{restaurant.address}</p>
+							</div>
+						))}
 					</div>
 				</div>
 			</div>
