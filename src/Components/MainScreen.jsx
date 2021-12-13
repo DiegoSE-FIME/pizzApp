@@ -20,16 +20,15 @@ function MainScreen() {
 	}, []);
 
 	const [error, setError] = useState(null);
-	const [userName, setEmail] = useState('');
+	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
-	const [user, setUser] = useState(null);
 
 	let navigate = useNavigate();
 
 	const handleFormData = (e) => {
 		e.preventDefault();
 
-		if (!userName.trim()) {
+		if (!username.trim()) {
 			setError('A user is required');
 			return;
 		} else if (!password.trim()) {
@@ -42,7 +41,7 @@ function MainScreen() {
 		if (password.length < 6) {
 			setError('Password length must be greater than 6 characters');
 			return;
-		} else if (userName.length <= 2) {
+		} else if (username.length <= 2) {
 			setError('User name must be greater than 2 characters');
 			return;
 		} else {
@@ -50,9 +49,8 @@ function MainScreen() {
 		}
 
 		setError(null);
-		setEmail('');
+		setUsername('');
 		setPassword('');
-		setUser(userName);
 		navigate('/home');
 	};
 
@@ -60,7 +58,7 @@ function MainScreen() {
 		alert('Lo siento pero aún no tenemos esa función :c');
 	};
 
-	const saveUser = localStorage.setItem('user', userName);
+	localStorage.setItem('user', username);
 
 	return (
 		<div className="container">
@@ -90,8 +88,8 @@ function MainScreen() {
 								<InputForm
 									className="form-control mt-4"
 									placeholder="User"
-									onChange={(e) => setEmail(e.target.value)}
-									value={userName}
+									onChange={(e) => setUsername(e.target.value)}
+									value={username}
 								/>
 								<InputForm
 									type="password"
