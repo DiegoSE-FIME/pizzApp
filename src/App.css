@@ -1,6 +1,6 @@
 .wrapper {
 	width: 700px;
-	height: 110vh;
+	height: 112vh;
 	margin-left: -125px;
 }
 
@@ -11,7 +11,7 @@
 	display: flex;
 	justify-content: start;
 	justify-items: start;
-	margin: -550px 0 0 40px;
+	margin: -590px 0 0 40px;
 }
 
 .form-view {
@@ -71,7 +71,36 @@
 	color: #000;
 }
 
-.card-title,
+.card-title {
+	margin-top: -20px;
+	margin-left: 25px;
+	text-decoration: none;
+	display: block;
+	position: relative;
+	color: #000;
+}
+
+.card-title::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 10px;
+	width: 100%;
+	height: 0.1em;
+	background-color: #ffd966;
+	opacity: 0;
+	transition: opacity 300ms, transform 300ms;
+}
+.card-title:hover {
+	color: #707070;
+}
+.card-title:hover::after,
+.card-title:focus::after {
+	opacity: 1;
+	transform: translate3d(0, 0.2em, 0);
+}
 .card-text {
-	margin-left: 32px;
+	margin-top: -5px;
+	margin-left: 40px;
+	margin-bottom: 40px;
 }
