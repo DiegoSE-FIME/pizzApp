@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, Outlet } from 'react-router';
 import axios from 'axios';
-import '../App.css';
-
 import Aos from 'aos';
+
 import 'aos/dist/aos.css';
+import '../App.css';
 
 import Background from '../assets/imagebkg.png';
 import Pizza from '../assets/Pizza.png';
@@ -19,11 +19,15 @@ import {
 
 function Home() {
 	const [restaurants, setRestaurants] = useState([]);
-	useEffect(() => {
+	useEffect(async () => {
 		Aos.init({ duration: 2000 });
-		axios.get('api.json').then((res) => {
-			setRestaurants(res.data[0].response.stores);
-		});
+		axios
+			.get('api.json')
+			.then((res) => {
+				setRestaurants(res.data[0].response.stores);
+			})
+
+			.catch((error) => console.log(error));
 	}, []);
 
 	const restaurantsArray = Object.values(restaurants);
@@ -33,6 +37,12 @@ function Home() {
 	const logOut = () => {
 		navigate('/');
 		localStorage.clear();
+	};
+
+	const RenderSingleRestaurant = (restaurant) => {
+		navigate(`/home/:${restaurant}`);
+		const savedRestaurant = localStorage.setItem('restaurant', restaurant);
+		return savedRestaurant;
 	};
 
 	return (
@@ -65,24 +75,23 @@ function Home() {
 					<div className="row mt-4">
 						{restaurantsArray.map((restaurant) => (
 							<div
-								className="col-sm mb-4"
+								className="col-sm"
 								key={restaurant.id}
 								data-aos="fade-left"
 								data-aos-delay="200">
 								<StyledCard>
-									<div>
-										<img
-											src={restaurant.logo}
-											alt=""
-											className="card-img-top"
-										/>
-									</div>
+									<img src={restaurant.logo} className="card-img-top" />
 								</StyledCard>
-								<h5 className="card-title">{restaurant.name}</h5>
-								<p className="card-text">{restaurant.address}</p>
+								<button
+									className="card-title btn btn-link"
+									onClick={() => RenderSingleRestaurant(restaurant.name)}>
+									{restaurant.name}
+								</button>
+								<p className="card-text mb-3">{restaurant.address}</p>
 							</div>
 						))}
 					</div>
+					<Outlet />
 				</div>
 			</div>
 		</div>
