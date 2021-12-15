@@ -104,3 +104,19 @@
 	margin-left: 40px;
 	margin-bottom: 40px;
 }
+
+.address-single-store {
+	margin-left: 40px;
+}
+
+.single-store-menu {
+	margin: 20px 0 30px 40px;
+}
+
+.list-group-item {
+	margin: 0 0 15px 40px;
+}
+
+.restaurant-logo {
+	position: relative;
+}
