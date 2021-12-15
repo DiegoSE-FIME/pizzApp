@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h3 align="center">PizzApp</h3>
+  <h3 align="center">PizzApp 🍕</h3>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -19,7 +19,6 @@
     <li>
       <a href="#getting-started">Getting started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -34,12 +33,12 @@
 
 ### Made with 🔧
 
-- React
-- Bootstrap
-- Styled Components
+- React ⚛
+- Bootstrap 
+- Styled Components 💅
 - CSS
-- Axios
-- React router v6
+- Axios 👨‍💻
+- React router v6 📍
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -47,7 +46,7 @@
 
 ## Getting started
 
-### Instalación
+### Installation
 
 1. git clone this project 
 
@@ -62,7 +61,7 @@
     ```sh
     npm install
     ```
-    
+4. Run the project  
     ```sh
     npm run dev
     ```
