@@ -27,7 +27,6 @@ function MainScreen() {
 
 	const handleFormData = (e) => {
 		e.preventDefault();
-
 		if (!username.trim()) {
 			setError('A user is required');
 			return;
@@ -107,9 +106,7 @@ function MainScreen() {
 								<StyledButton
 									className="mt-3"
 									type="submit"
-									onClick={() =>
-										username && password ? handleFormData() : navigate('/')
-									}>
+									onClick={() => handleFormData()}>
 									Iniciar sesión
 								</StyledButton>
 							</form>
