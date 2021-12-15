@@ -44,6 +44,7 @@ function Home() {
 		return savedRestaurant;
 	};
 
+	localStorage.setItem('pizzaImage', Pizza);
 	return (
 		<div className="container">
 			<div className="row">
@@ -71,7 +72,7 @@ function Home() {
 							Salir
 						</button>
 					</div>
-					<div className="row mt-4">
+					<div className="row mt-4 restaurant-container">
 						{restaurantsArray.map((restaurant) => (
 							<div
 								className="col-sm"
