@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import Background from '../assets/imagebkg.png';
-import Pizza from '../assets/Pizza.png';
+
 import {
 	BackgroundImage,
 	StyledTitleSingleStore,
@@ -12,6 +13,7 @@ import {
 const SingleStore = () => {
 	const [restaurant, setRestaurant] = useState([]);
 	const [products, setProducts] = useState([]);
+	let navigate = useNavigate();
 
 	useEffect(async () => {
 		await axios
@@ -24,31 +26,32 @@ const SingleStore = () => {
 						localStorage.getItem('restaurant')
 					) {
 						setRestaurant(res.data[0].response.stores[i]);
-					}
-				}
-				// products
-				for (let j = 0; j < res.data[0].response.stores.length; j++) {
-					if (
-						res.data[0].response.stores[j].name ===
-						localStorage.getItem('restaurant')
-					) {
-						setProducts(res.data[0].response.stores[j].products);
+						setProducts(res.data[0].response.stores[i].products);
 					}
 				}
 			})
 			.catch((err) => console.log(err));
 	}, []);
 
+	const goToHome = () => {
+		navigate('/home');
+	};
+
 	return (
 		<div className="container">
 			<div className="row">
 				<div className="col-sm wrapper">
 					<BackgroundImage src={Background}></BackgroundImage>
-					<img src={restaurant.logo} alt="" />
+					<img src={restaurant.logo} className="restaurant-logo" />
 				</div>
 				<div className="col-sm">
 					<StyledTitleSingleStore>{restaurant.name}</StyledTitleSingleStore>
 					<StoreDesc>{restaurant.description}</StoreDesc>
+					<button
+						className="go-back-button btn btn-link"
+						onClick={() => goToHome()}>
+						Inicio
+					</button>
 					<span className="address-single-store">
 						Dirección: {restaurant.address}
 					</span>
