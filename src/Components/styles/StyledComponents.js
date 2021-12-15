@@ -55,3 +55,16 @@ export const StyledCard = styled.div`
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 	margin: 0 0 25px 35px;
 `;
+
+export const StyledTitleSingleStore = styled(StyledTitle)`
+	font-size: 3rem;
+	width: 300px;
+	display: inline-block;
+	border-bottom: 3px solid ${(c) => c.theme.colors.yellow};
+`;
+
+export const StoreDesc = styled.p`
+	font-size: 1.3rem;
+	color: ${(c) => c.theme.colors.black};
+	margin: 50px 0 0 40px;
+`;

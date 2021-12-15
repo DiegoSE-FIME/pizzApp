@@ -107,7 +107,9 @@ function MainScreen() {
 								<StyledButton
 									className="mt-3"
 									type="submit"
-									onClick={() => (user ? handleFormData() : navigate('/'))}>
+									onClick={() =>
+										username && password ? handleFormData() : navigate('/')
+									}>
 									Iniciar sesión
 								</StyledButton>
 							</form>
