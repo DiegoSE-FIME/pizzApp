@@ -21,12 +21,11 @@ function Home() {
 	const [restaurants, setRestaurants] = useState([]);
 	useEffect(async () => {
 		Aos.init({ duration: 2000 });
-		axios
+		await axios
 			.get('api.json')
 			.then((res) => {
 				setRestaurants(res.data[0].response.stores);
 			})
-
 			.catch((error) => console.log(error));
 	}, []);
 
