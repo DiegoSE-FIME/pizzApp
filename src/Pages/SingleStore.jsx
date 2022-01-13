@@ -17,7 +17,9 @@ const SingleStore = () => {
 
 	useEffect(async () => {
 		await axios
-			.get('../../api.json')
+			.get(
+				'https://raw.githubusercontent.com/DiegoSE-FIME/pizzApp/main/api.json'
+			)
 			.then((res) => {
 				// getting the restaurant properties if is saved in the local storage
 				for (let i = 0; i < res.data[0].response.stores.length; i++) {

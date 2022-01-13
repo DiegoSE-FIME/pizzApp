@@ -56,7 +56,7 @@ export const StyledTitle = styled.h1`
 	top: 40px;
 	left: 40px;
 	margin-bottom: 30px;
-	font-family: 'Marcellas', sans-serif;
+	font-family: 'Cerebri sans', sans-serif;
 `;
 
 export const StyledCard = styled.div`

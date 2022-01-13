@@ -22,8 +22,11 @@ function Home() {
 	useEffect(async () => {
 		Aos.init({ duration: 2000 });
 		await axios
-			.get('api.json')
+			.get(
+				'https://raw.githubusercontent.com/DiegoSE-FIME/pizzApp/main/api.json'
+			)
 			.then((res) => {
+				console.log(res.data);
 				setRestaurants(res.data[0].response.stores);
 			})
 			.catch((error) => console.log(error));

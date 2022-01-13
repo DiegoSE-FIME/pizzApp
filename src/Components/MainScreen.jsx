@@ -38,18 +38,16 @@ function MainScreen() {
 		}
 
 		if (password.length < 6) {
-			setError('Password length must be greater than 6 characters');
+			setError('La contraseña debe tener al menos 6 caracteres');
 			return;
-		} else if (username.length <= 2) {
-			setError('User name must be greater than 2 characters');
+		} else if (username.length <= 3) {
+			setError('El nombre de usuario debe tener al menos 3 caracteres');
 			return;
 		} else {
 			setError(null);
 		}
 
 		setError(null);
-		setUsername('');
-		setPassword('');
 		navigate('/home');
 	};
 
@@ -86,14 +84,14 @@ function MainScreen() {
 								) : null}
 								<InputForm
 									className="form-control mt-4"
-									placeholder="User"
+									placeholder="Usuario"
 									onChange={(e) => setUsername(e.target.value)}
 									value={username}
 								/>
 								<InputForm
 									type="password"
 									className="form-control mt-4"
-									placeholder="Password"
+									placeholder="Contraseña"
 									onChange={(e) => setPassword(e.target.value)}
 									value={password}
 								/>
