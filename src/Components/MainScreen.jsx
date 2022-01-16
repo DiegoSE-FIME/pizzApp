@@ -25,7 +25,7 @@ function MainScreen() {
 
 	let navigate = useNavigate();
 
-	const handleFormData = (e) => {
+	function handleFormData(e) {
 		e.preventDefault();
 		if (!username.trim()) {
 			setError('A user is required');
@@ -49,7 +49,7 @@ function MainScreen() {
 
 		setError(null);
 		navigate('/home');
-	};
+	}
 
 	const forgotPassword = () => {
 		alert('Lo siento pero aún no tenemos esa función :c');
@@ -101,10 +101,7 @@ function MainScreen() {
 									type="button">
 									¿Olvidaste tu contraseña?
 								</button>
-								<StyledButton
-									className="mt-3"
-									type="submit"
-									onClick={() => handleFormData()}>
+								<StyledButton className="mt-3" type="submit">
 									Iniciar sesión
 								</StyledButton>
 							</form>

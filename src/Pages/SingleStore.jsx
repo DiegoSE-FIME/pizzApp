@@ -28,7 +28,7 @@ const SingleStore = () => {
 						localStorage.getItem('restaurant')
 					) {
 						setRestaurant(res.data[0].response.stores[i]);
-						setProducts(res.data[0].response.stores[i].products);
+						setProducts(res.data[0].response.stores[i]?.products);
 					}
 				}
 			})

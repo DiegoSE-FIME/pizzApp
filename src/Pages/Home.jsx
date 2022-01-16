@@ -26,7 +26,6 @@ function Home() {
 				'https://raw.githubusercontent.com/DiegoSE-FIME/pizzApp/main/api.json'
 			)
 			.then((res) => {
-				console.log(res.data);
 				setRestaurants(res.data[0].response.stores);
 			})
 			.catch((error) => console.log(error));
@@ -38,7 +37,7 @@ function Home() {
 
 	const logOut = () => {
 		navigate('/');
-		localStorage.clear();
+		localStorage.removeItem('user');
 	};
 
 	const RenderSingleRestaurant = (restaurant) => {
