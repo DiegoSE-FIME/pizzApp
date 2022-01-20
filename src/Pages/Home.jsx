@@ -46,7 +46,6 @@ function Home() {
 		return savedRestaurant;
 	};
 
-	localStorage.setItem('pizzaImage', Pizza);
 	return (
 		<div className="container">
 			<div className="row">
